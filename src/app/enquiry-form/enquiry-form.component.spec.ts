@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { EnquiryService } from '../enquiry.service';
 
-import { EnquiryFormComponent } from './enquiry-form.component';
+@Component({
+  selector: 'app-enquiry-form',
+  templateUrl: './enquiry-form.component.html',
+  styleUrls: ['./enquiry-form.component.css']
+})
+export class EnquiryFormComponent {
+  enquiry: any = {
+    name: '',
+    email: '',
+    message: ''
+  };
 
-describe('EnquiryFormComponent', () => {
-  let component: EnquiryFormComponent;
-  let fixture: ComponentFixture<EnquiryFormComponent>;
+  constructor(private enquiryService: EnquiryService) { }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [EnquiryFormComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(EnquiryFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  onSubmit() {
+    this.enquiryService.submitEnquiry(this.enquiry).subscribe(response => {
+      console.log('Enquiry submitted', response);
+      // Reset the form or display a success message
+    }, error => {
+      console.error('Error submitting enquiry:', error);
+      // Handle error case
+    });
+  }
+}

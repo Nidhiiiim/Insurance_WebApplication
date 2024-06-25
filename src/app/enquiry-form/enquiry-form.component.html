@@ -1,1 +1,13 @@
-<p>enquiry-form works!</p>
+<h1>Enquiry Form</h1>
+<form (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="enquiry.name" name="name" required>
+  <br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" [(ngModel)]="enquiry.email" name="email" required>
+  <br>
+  <label for="message">Message:</label>
+  <textarea id="message" [(ngModel)]="enquiry.message" name="message" required></textarea>
+  <br>
+  <button type="submit">Submit</button>
+</form>
