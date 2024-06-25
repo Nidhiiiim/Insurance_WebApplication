@@ -10,4 +10,4 @@ ETL: AWS Glue
 Architecture: MVC (Model-View-Controller)
 
 ## Class Diagram
-![Class Digram](./Images/InsuranceWebApp.png)
+![Class Digram](/src/Images/InsuranceWebApp.png)
